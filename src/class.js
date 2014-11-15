@@ -1,5 +1,8 @@
 export class App {
-  constructor(first, last) {
-    console.log('lolwut');
+  constructor(message = 'Who is this') {
+    this.message = message;
+  }
+  doIt(name) {
+    console.log(`${this.message}: ${name}`);
   }
 };

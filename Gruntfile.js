@@ -29,11 +29,8 @@ module.exports = function (grunt) {
                 src: 'gruntfile.js'
             },
             lib_test: {
-                src: ['lib/**/*.js', 'test/**/*.js']
+                src: ['src/**/*.js', 'test/**/*.js']
             }
-        },
-        nodeunit: {
-            files: ['test/**/*_test.js']
         },
         watch: {
             gruntfile: {
@@ -42,7 +39,7 @@ module.exports = function (grunt) {
             },
             lib_test: {
                 files: '<%= jshint.lib_test.src %>',
-                tasks: ['jshint:lib_test', 'nodeunit']
+                tasks: ['test']
             }
         },
         '6to5': {
@@ -57,16 +54,23 @@ module.exports = function (grunt) {
               dest: 'dist/'
             }]
           }
+        },
+        mochaTest: {
+          test: {
+            src: ['test/**/*.js']
+          }
         }
     });
 
     // These plugins provide necessary tasks
-    grunt.loadNpmTasks('grunt-contrib-nodeunit');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-6to5');
+    grunt.loadNpmTasks('grunt-mocha-test');
 
     // Default task
-    grunt.registerTask('default', ['jshint', 'nodeunit']);
+    grunt.registerTask('compile', ['6to5']);
+    grunt.registerTask('test', ['compile', 'mochaTest']);
+    grunt.registerTask('default', ['jshint', 'test']);
 };
 
