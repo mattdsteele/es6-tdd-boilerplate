@@ -44,6 +44,19 @@ module.exports = function (grunt) {
                 files: '<%= jshint.lib_test.src %>',
                 tasks: ['jshint:lib_test', 'nodeunit']
             }
+        },
+        '6to5': {
+          options: {
+            modules: 'common'
+          },
+          build: {
+            files: [{
+              expand: true,
+              cwd: 'src',
+              src: ['**/*.js'],
+              dest: 'dist/'
+            }]
+          }
         }
     });
 
@@ -51,6 +64,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-6to5');
 
     // Default task
     grunt.registerTask('default', ['jshint', 'nodeunit']);
