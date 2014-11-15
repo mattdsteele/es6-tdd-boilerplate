@@ -1,3 +1,4 @@
-import App from './class';
+import { App } from './class';
 
-App();
+let x = new App();
+x.doIt();

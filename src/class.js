@@ -2,7 +2,7 @@ export class App {
   constructor(message = 'Who is this') {
     this.message = message;
   }
-  doIt(name) {
+  doIt(name = 'Bob') {
     console.log(`${this.message}: ${name}`);
   }
 };
