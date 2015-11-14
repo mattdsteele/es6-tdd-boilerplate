@@ -2,8 +2,12 @@
 
 A sample project that allows you to build an app using ES6 features, and TDD them.
 
-* Compiles with [6to5](https://github.com/sebmck/6to5)
+* Compiles with [Babel](https://babeljs.io/)
 * Unit testing with [Mocha + Chai](http://mochajs.org/)
+
+To run tests: `npm test`
+
+Or to run tests on file changes: `gulp`
 
 ## Useful ES6 resources
 

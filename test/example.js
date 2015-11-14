@@ -1,12 +1,13 @@
-var assert = require('assert');
-var App = require('../dist/class').App;
-describe('array', function() {
-  it('should do something', function() {
-    assert.equal(1, 1);
+import assert from 'assert';
+import App from '../src/class';
+import { expect } from 'chai';
+
+describe('something', () => {
+  it('test', () => {
+    expect(1).to.equal(1);
   });
-  it('should do something else', function() {
+  it('another', () => {
     var a = new App('What is my name');
-    a.doIt('Whaaaa?');
+    expect(a.message).to.equal('What is my name');
   });
 });
-
